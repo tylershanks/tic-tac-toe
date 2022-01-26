@@ -1,0 +1,109 @@
+html {
+    background-color: rgb(32, 33, 36);
+    font-family: sans-serif;
+}
+
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: stretch;
+    height: 100vh;
+    width: 100vw;
+    min-height: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+
+.topBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(160, 160, 160);
+    min-height: 80px;
+    width: 80vw;
+    min-width: 275px;
+    margin-top: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-width: 0;
+
+    border-top: 2px solid rgb(52, 53, 56);
+    border-left: 2px solid rgb(52, 53, 56);
+    border-right: 2px solid rgb(52, 53, 56);
+}
+
+.gameBox {
+    display: grid;
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px;
+    justify-content: center;
+    padding: 30px 0px 30px 0px;
+
+    background-color: rgba(11,27,103,1);
+    min-height: 240px;
+    width: 80vw;
+    min-width: 275px;
+
+    border-left: 2px solid rgb(52, 53, 56);
+    border-right: 2px solid rgb(52, 53, 56);
+}
+
+.bottomBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(160, 160, 160);
+    min-height: 80px;
+    width: 80vw;
+    min-width: 275px;
+    margin-bottom: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    border-color: rgb(52, 53, 56);
+    border-left: 2px solid rgb(52, 53, 56);
+    border-right: 2px solid rgb(52, 53, 56);
+    border-bottom: 2px solid rgb(52, 53, 56);
+}
+
+button {
+    background-color: rgba(11,27,103,1);
+    border: none;
+    border-top: 2px solid whitesmoke;
+    border-left: 2px solid whitesmoke;
+    color: white;
+    cursor: pointer;
+    font-size: 36px;
+    font-family: sans-serif;
+}
+
+.noTopNoLeft {
+    border-top: 0px;
+    border-left: 0px;
+}
+
+.noTop {
+    border-top: 0px;
+}
+
+.noLeft {
+    border-left: 0px;
+}
+
+#restartButton {
+    border: 0px;
+    background-color: rgb(160, 160, 160);
+    color: black;
+    font-size: 20px;
+}
