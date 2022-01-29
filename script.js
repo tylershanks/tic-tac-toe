@@ -19,12 +19,17 @@ var gameBoardModule = (function() {
     //x = 1, o = 2, empty slot = 0
 
     function computerTurn () {
+        //computer picks random spot
         let randomBoard = Math.floor(Math.random()*9);
 
+        //if the randomly selected spot is empty and if the game is not over
+        //we change that spot int he gameBoard to 2 and change the DOM to an O at that spot
         if (gameBoard[randomBoard] == 0 && gameOver == false) {
             gameBoard[randomBoard] = 2;
             document.querySelector('#board'+randomBoard).innerHTML = 'O'; 
         }
+        //if the spot is occupied, run the function again.
+        //this picks a new random number for the computer to try and play on
         else if (gameOver == false) {
             computerTurn();
         }
@@ -55,6 +60,11 @@ var gameBoardModule = (function() {
 
     function checkWinner () {
         console.log('winner checked');
+
+        //since empty spot = 0, X = 1, and O = 2,
+        //the sum of the whole array can only be one of 5 specific numbers
+        //if someone wins the game. and based on those numbers, we know
+        //if player 1 (X) won, or player 2 (O)
         let gameBoardSum = gameBoard.reduce((a,b) => a+b, 0)
 
         if (gameBoard[0] != 0 &&
@@ -112,13 +122,63 @@ var gameBoardModule = (function() {
         }
     }
 
+    //function to change the gameBoard and change the DOM according to player moves
+    //also checks for a winner after every player move and computer move
+    function boardClick(boardNumber) {
+        return function() {
+
+        //if array at this spot == 0, player can move here
+        //also if the game is not over
+        if (gameBoard[boardNumber] == 0 && gameOver == false) {
+            document.querySelector('#'+this.id).innerHTML = 'X';
+            gameBoard[boardNumber] = 1;
+            checkWinner();
+            computerTurn();
+            checkWinner();
+        }
+
+        //else send message saying you cant go there because the spot is occupied
+        else {
+            console.log('you cant go here')
+        }
+    }
+    }
+
+    //adding the function to all 9 buttons
+    board0.onclick = boardClick(0);
+    board1.onclick = boardClick(1);
+    board2.onclick = boardClick(2);
+    board3.onclick = boardClick(3);
+    board4.onclick = boardClick(4);
+    board5.onclick = boardClick(5);
+    board6.onclick = boardClick(6);
+    board7.onclick = boardClick(7);
+    board8.onclick = boardClick(8);
+
+
+
+
+    /*
+        Im leaving all the below in to remind myself my initial ideas
+        and how i ended up fixing it and making it more concise.
+        The goal of this project is to use modular pieces.
+        I was fixing 9 separate functions every time something changed
+        in one of the buttons and that was not the goal.
+        Now, if anything needs to change about the buttons, I only
+        need to change 1 function.
+    
+    */
+
+
+/*
     //when button w specific ID is clicked, corresponding function takes place
     //changes button inner html, changes value of game board array to 1
     board0.onclick = function topLeft () {
 
         //if array at this spot == 0
         if (gameBoard[0] == 0 && gameOver == false) {
-            console.log('topLeft clicked');
+            console.log(this.id+' topLeft clicked');
+            console.log(this.id);
             document.querySelector('#board0').innerHTML = 'X';
             gameBoard[0] = 1;
             //console.log(gameBoard);
@@ -293,22 +353,8 @@ var gameBoardModule = (function() {
             console.log('you cant go here')
         }
     }
-
+*/
     
     
 
 })();
-
-
-/*
-let gameBoardController = {
-        
-
-    init: function () {
-        console.log('gbc initialted');
-    }
-};
-
-gameBoardController.init();
-
-*/
