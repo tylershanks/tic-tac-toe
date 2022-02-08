@@ -10,3 +10,5 @@ Every time I wanted to change something regarding the functionality of the butto
 
 I was able to change it so there was only one function that applied to all of the buttons.
 It cut the number of lines of code in half and definitely helped teach me the power of modular coding.
+
+Github Pages: https://tylershanks.github.io/tic-tac-toe/
